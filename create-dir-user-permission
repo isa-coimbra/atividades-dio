@@ -1,0 +1,26 @@
+#!/bin/bash
+
+mkdir /projeto1
+mkdir /projeto2
+mkdir /adm
+
+groupadd proj1
+groupadd proj2
+groupadd adm
+
+useradd -m joao -p $(openssl passwd -crypt user1234) 
+useradd -m maria -p $(openssl passwd -crypt user1234)
+useradd -m mario -p $(openssl passwd -crypt user1234)
+
+usermod -a -G proj1 joao
+usermod -a -G proj2 maria
+usermod -a -G adm mario
+
+
+chmod 700 /adm
+chmod 755 /proj1
+chmod 755 /proj2
+
+chown root:proj1 /proj1
+chown root:proj2 /proj2
+chown root:adm /adm
